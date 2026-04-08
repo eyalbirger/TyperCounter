@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using Terminal.Gui;
+
+using TyperCounter;
 
 namespace TyperCounter
 {
@@ -18,13 +21,7 @@ namespace TyperCounter
   internal class Program
   {
     
-    static string TC_title = @"
-  _______                        ______                                  
- /_  __/_  ______  ___  _____   / ____/___  __  ______  / /____  _____ 
-  / / / / / / __ \/ _ \/ ___/  / /   / __ \/ / / / __ \/ __/ _ \/ ___/ 
- / / / /_/ / /_/ /  __/ /     / /___/ /_/ / /_/ / / / / /_/  __/ /     
-/_/  \__, / .___/\___/_/      \____/\____/\__,_/_/ /_/\__/\___/_/      
-    /____/_/                                                           ";
+
     static void Main(string[] args)
     {
       Application.Init ();
@@ -42,19 +39,22 @@ namespace TyperCounter
         Normal = new Terminal.Gui.Attribute(Color.White, Color.Black),
       };
 
+      TextForApp text = new TextForApp() {};
       var win = new Window()
       {
-        Title = "TyperCounter - press 'Escape' to exit",
+        
+        Title = "TyperCounter - press 'Esc' to exit",
         X = 0,
         Y = 1,
         Width = Dim.Fill(),
         Height = Dim.Fill(),
-        ColorScheme = grayOnBlack
+        ColorScheme = grayOnBlack,
+        CanFocus = true
       };
       
       var mainTitle = new Label()
       {
-        Text = TC_title,
+        Text = text.getText("TC_title"),
         X = Pos.Center(),
         Y = Pos.Center() - 4,
         ColorScheme = whiteOnBlackText
@@ -73,17 +73,43 @@ namespace TyperCounter
         Y = seconderyTitle.Y + 1
       };
       
-      var startB = new Button()
+      var secondScreenIntrodaction = new Label()
       {
-        Text = "start",
+        Text = @"",
         X = Pos.Center(),
-        Y = 5
+        Y = Pos.Center()//,
+        //Width = Dim.Fill(),
+        //Height = Dim.Fill()
       };
       
-      win.Add(mainTitle, seconderyTitle, startTitle);
+
+
+      win.Add(mainTitle, seconderyTitle, startTitle, secondScreenIntrodaction);
+      
+      bool startMenu = true;
+      win.KeyDown += (sender, args) =>
+      {
+        if (startMenu == true)
+        {
+          if (args == Key.Space)
+          {
+            startMenu = false;
+
+            win.Remove(startTitle);
+            win.Remove(seconderyTitle);
+            win.Remove(mainTitle);
+
+            secondScreenIntrodaction.Text = text.getText("introdactionText");
+          }
+        }
+      };
+
+
+
+
       
       Application.Run(win);
-
+      win.SetFocus();
       Application.Shutdown();
       
       //System.Console.WriteLine("This is TyperCounter. its a tool to help you visualize your most used keyboard keys press");
