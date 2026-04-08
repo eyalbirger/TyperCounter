@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TyperCounter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33da173981f39bd2ea6a0022235d60d51ce7b7e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("TyperCounter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TyperCounter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
