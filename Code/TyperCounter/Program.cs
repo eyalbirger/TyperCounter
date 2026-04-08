@@ -44,7 +44,7 @@ namespace TyperCounter
 
       var win = new Window()
       {
-        Title = "TyperCounter",
+        Title = "TyperCounter - press 'Escape' to exit",
         X = 0,
         Y = 1,
         Width = Dim.Fill(),
@@ -56,7 +56,7 @@ namespace TyperCounter
       {
         Text = TC_title,
         X = Pos.Center(),
-        Y = Pos.Center() - 2,
+        Y = Pos.Center() - 4,
         ColorScheme = whiteOnBlackText
       };
       var seconderyTitle = new Label()
@@ -66,6 +66,12 @@ namespace TyperCounter
         Y = mainTitle.Y + 6,
         ColorScheme = whiteOnBlackText
       };
+      var startTitle = new Label()
+      {
+        Text = "press 'Space' to start",
+        X = Pos.Center(),
+        Y = seconderyTitle.Y + 1
+      };
       
       var startB = new Button()
       {
@@ -74,7 +80,7 @@ namespace TyperCounter
         Y = 5
       };
       
-      win.Add(mainTitle, seconderyTitle);
+      win.Add(mainTitle, seconderyTitle, startTitle);
       
       Application.Run(win);
 
