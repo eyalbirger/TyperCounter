@@ -129,11 +129,13 @@ namespace TyperCounter
       bool programRunning = true;
       win.KeyDown += (sender, args) =>
       {
-        if (startMenu == true || secondMenu == true || programBeforeRunning == true)
+        if (!accept)
         {
           if (args == Key.Esc)
           {
             Application.RequestStop();
+            args.Handled = true;
+            return;
           }
         }
         if (startMenu == true)
@@ -166,7 +168,6 @@ namespace TyperCounter
           {
           accept = true;
           programBeforeRunning = false;
-          win.Title = "TyperCounter";
           programRunningText.Text = "Program Running";
           stopB.Visible = true;
           programRunning = true;
@@ -185,6 +186,11 @@ namespace TyperCounter
       {
         if (accept)
         {
+          FileInfo fileinfo = new FileInfo("logs\recording.txt");
+
+          if (fileinfo.Exists && fileinfo.Length > 5 * 1024 * 1024)
+            return;
+
           string keyname = args.Data.KeyCode.ToString().Replace("Vc", "");
           File.AppendAllText(logsPath, keyname + Environment.NewLine);
         }
@@ -194,6 +200,8 @@ namespace TyperCounter
       {
         if(accept == true)
         {
+          accept = false;
+          programBeforeRunning = true;
           stopB.Visible = false;
           programRunning = false;
           programRunningText.Text = text.getText("textAfterRecording");

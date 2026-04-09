@@ -20,7 +20,7 @@ it will be recorded in a .txt file.
 I (the creator) DO NOT have acces to this file (you can't uplaod it to github).
 
 Press 'H' for help.
-Press 'Esc' to close this app (you wont be able to close the app this way afterwards).
+Press 'Esc' to close this app.
 Press the 'Stop' button after you finish recording your key presses.";
 
   static private string areYouSureText = @"Are You Sure? (y/n)";
