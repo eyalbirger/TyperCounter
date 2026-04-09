@@ -12,14 +12,21 @@ static private string TC_title = @"
 /_/  \__, / .___/\___/_/      \____/\____/\__,_/_/ /_/\__/\___/_/      
     /____/_/                                                           ";
 
-  static private string introdactionText = @"Hello user.
+  static private string introductionText = 
+@"Hello user.
 The moment you press 'Space' again the program will start.
 that means every time you press on a key on your keyboard,
 it will be recorded in a .txt file.
 I (the creator) DO NOT have acces to this file (you can't uplaod it to github).
+
 Press 'H' for help.
 Press 'Esc' to close this app (you wont be able to close the app this way afterwards).
 Press the 'Stop' button after you finish recording your key presses.";
+
+  static private string areYouSureText = @"Are You Sure? (y/n)";
+
+  static private string textAfterRecording = @"Program stopped.
+Press s to scan and export the keyboard layout editor's json file.";
 
   public TextForApp()
   {
@@ -31,8 +38,14 @@ Press the 'Stop' button after you finish recording your key presses.";
     {
       case "TC_title":
         return TC_title;
-      case "introdactionText":
-        return introdactionText;
+      case "introductionText":
+        return introductionText;
+      case "areYouSureText":
+        return areYouSureText;
+      case "textAfterRecording":
+        return textAfterRecording;
+      
+      //i dono i like this to be last i dont know i it does something else if its not last
       default:
         return "text not found";
     }

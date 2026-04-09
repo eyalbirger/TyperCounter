@@ -50,6 +50,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "SharpHook": {
+              "target": "Package",
+              "version": "[7.1.1, )"
+            },
             "Terminal.Gui": {
               "target": "Package",
               "version": "[2.0.0-beta.*, )"

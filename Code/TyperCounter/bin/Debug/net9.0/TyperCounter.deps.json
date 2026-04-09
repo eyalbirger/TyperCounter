@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v9.0": {
       "TyperCounter/1.0.0": {
         "dependencies": {
+          "SharpHook": "7.1.1",
           "Terminal.Gui": "2.0.0"
         },
         "runtime": {
@@ -483,6 +484,66 @@
           "Microsoft.SourceLink.Common": "8.0.0"
         }
       },
+      "SharpHook/7.1.1": {
+        "runtime": {
+          "lib/net9.0/SharpHook.dll": {
+            "assemblyVersion": "7.1.1.0",
+            "fileVersion": "7.1.1.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libuiohook.so": {
+            "rid": "linux-arm",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-arm64/native/libuiohook.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libuiohook.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/maccatalyst-arm64/native/libuiohook.dylib": {
+            "rid": "maccatalyst-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/maccatalyst-x64/native/libuiohook.dylib": {
+            "rid": "maccatalyst-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/libuiohook.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libuiohook.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/uiohook.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/uiohook.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/uiohook.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {},
       "System.Collections.Immutable/8.0.0": {},
       "System.Composition/8.0.0": {
@@ -785,6 +846,13 @@
       "sha512": "sha512-G5q7OqtwIyGTkeIOAc3u2ZuV/kicQaec5EaRnc0pIeSnh9LUjj+PYQrJYBURvDt7twGl2PKA7nSN0kz1Zw5bnQ==",
       "path": "microsoft.sourcelink.github/8.0.0",
       "hashPath": "microsoft.sourcelink.github.8.0.0.nupkg.sha512"
+    },
+    "SharpHook/7.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IgzfEVFCVsO2LtMmAR6fAxEsCTJlqJtXGELLFBynGs6mlZwL/u2c+o3UXpQ7Yrc3+57eurKNSRfIKvaYBtccBA==",
+      "path": "sharphook/7.1.1",
+      "hashPath": "sharphook.7.1.1.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

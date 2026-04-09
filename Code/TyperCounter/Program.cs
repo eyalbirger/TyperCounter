@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using Terminal.Gui;
+using SharpHook;
+using SharpHook.Native;
 
+//the other text file
 using TyperCounter;
 
 namespace TyperCounter
@@ -24,6 +27,9 @@ namespace TyperCounter
 
     static void Main(string[] args)
     {
+      //folder path for the logs :)
+      string logsPath = Path.Combine("logs", "recording.txt");
+
       Application.Init ();
       var top = Application.Top;
 
@@ -72,41 +78,129 @@ namespace TyperCounter
         X = Pos.Center(),
         Y = seconderyTitle.Y + 1
       };
-      
-      var secondScreenIntrodaction = new Label()
+  
+      var secondScreenintroduction = new Label()
       {
         Text = @"",
         X = Pos.Center(),
-        Y = Pos.Center()//,
-        //Width = Dim.Fill(),
-        //Height = Dim.Fill()
+        Y = Pos.Center(),
+        Width = Dim.Auto(),
+        Height = Dim.Auto(),
+        TextAlignment = Alignment.Center
+      };
+      var areYouSureTitle = new Label()
+      {
+        Text = @"",
+        X = Pos.Center(),
+        Y = Pos.Center() - 4
+      };
+
+      var programRunningText = new Label()
+      {
+        Text = @"",
+        X = Pos.Center(),
+        Y = Pos.Center() - 4,
+        Width = Dim.Auto(),
+        Height = Dim.Auto(),
+        TextAlignment = Alignment.Center
+      };
+
+      var stopB = new Button()
+      {
+        Text = "stop",
+        X = Pos.Center(),
+        Y = Pos.Center() - 1,
+        Visible = false
       };
       
+      //sharphook obj
+      var hook = new TaskPoolGlobalHook();
 
-
-      win.Add(mainTitle, seconderyTitle, startTitle, secondScreenIntrodaction);
+      //i just need to add shit here
+      win.Add(mainTitle, seconderyTitle, startTitle, secondScreenintroduction, areYouSureTitle, programRunningText, stopB);
       
+
+
+      //im starting to actually do something here (like the program does something)
       bool startMenu = true;
+      bool secondMenu = false;
+      bool programBeforeRunning = false;
+      bool accept = false;
+      bool programRunning = true;
       win.KeyDown += (sender, args) =>
       {
+        if (startMenu == true || secondMenu == true || programBeforeRunning == true)
+        {
+          if (args == Key.Esc)
+          {
+            Application.RequestStop();
+          }
+        }
         if (startMenu == true)
         {
           if (args == Key.Space)
           {
             startMenu = false;
-
+            secondMenu = true;
             win.Remove(startTitle);
             win.Remove(seconderyTitle);
             win.Remove(mainTitle);
 
-            secondScreenIntrodaction.Text = text.getText("introdactionText");
+            secondScreenintroduction.Text = text.getText("introductionText");
           }
+        }
+        //are you sure? (omni-man meme)
+        else if (secondMenu && args == Key.Space)
+        {
+          secondMenu = false;
+          programBeforeRunning = true;
+          win.Remove(secondScreenintroduction);
+
+          areYouSureTitle.Text = text.getText("areYouSureText");
+          args.Handled = true;
+        }
+        //accept
+        else if (programBeforeRunning)
+        {
+          if (args == Key.Y)
+          {
+          accept = true;
+          programBeforeRunning = false;
+          win.Title = "TyperCounter";
+          programRunningText.Text = "Program Running";
+          stopB.Visible = true;
+          programRunning = true;
+          win.Remove(areYouSureTitle);
+          args.Handled = true;
+
+          //sharphook hook
+          Task.Run(() => hook.Run());
+          }
+        else if (args == Key.N)
+          Application.RequestStop();
         }
       };
 
+      hook.KeyPressed += (sender, args) =>
+      {
+        if (accept)
+        {
+          string keyname = args.Data.KeyCode.ToString().Replace("Vc", "");
+          File.AppendAllText(logsPath, keyname + Environment.NewLine);
+        }
+      };
 
-
-
+      stopB.Accepting += (s, e) =>
+      {
+        if(accept == true)
+        {
+          stopB.Visible = false;
+          programRunning = false;
+          programRunningText.Text = text.getText("textAfterRecording");
+          hook.Dispose();
+        }
+      };
+      
       
       Application.Run(win);
       win.SetFocus();

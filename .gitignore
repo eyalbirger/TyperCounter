@@ -1,0 +1,5 @@
+**/logs/recording.txt
+**/bin/
+**/obj/
+.vscode/
+*.user

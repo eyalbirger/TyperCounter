@@ -595,6 +595,61 @@
           "buildMultiTargeting/_._": {}
         }
       },
+      "SharpHook/7.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/SharpHook.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/SharpHook.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libuiohook.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libuiohook.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/libuiohook.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/maccatalyst-arm64/native/libuiohook.dylib": {
+            "assetType": "native",
+            "rid": "maccatalyst-arm64"
+          },
+          "runtimes/maccatalyst-x64/native/libuiohook.dylib": {
+            "assetType": "native",
+            "rid": "maccatalyst-x64"
+          },
+          "runtimes/osx-arm64/native/libuiohook.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/libuiohook.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/uiohook.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/uiohook.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/uiohook.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -2404,6 +2459,44 @@
         "tools/net472/zh-Hant/Microsoft.SourceLink.GitHub.resources.dll"
       ]
     },
+    "SharpHook/7.1.1": {
+      "sha512": "IgzfEVFCVsO2LtMmAR6fAxEsCTJlqJtXGELLFBynGs6mlZwL/u2c+o3UXpQ7Yrc3+57eurKNSRfIKvaYBtccBA==",
+      "type": "package",
+      "path": "sharphook/7.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/net472/SharpHook.targets",
+        "icon.png",
+        "lib/net10.0-maccatalyst26.0/SharpHook.dll",
+        "lib/net10.0-maccatalyst26.0/SharpHook.xml",
+        "lib/net10.0/SharpHook.dll",
+        "lib/net10.0/SharpHook.xml",
+        "lib/net472/SharpHook.dll",
+        "lib/net472/SharpHook.xml",
+        "lib/net8.0/SharpHook.dll",
+        "lib/net8.0/SharpHook.xml",
+        "lib/net9.0-maccatalyst18.0/SharpHook.dll",
+        "lib/net9.0-maccatalyst18.0/SharpHook.xml",
+        "lib/net9.0/SharpHook.dll",
+        "lib/net9.0/SharpHook.xml",
+        "lib/netstandard2.0/SharpHook.dll",
+        "lib/netstandard2.0/SharpHook.xml",
+        "runtimes/linux-arm/native/libuiohook.so",
+        "runtimes/linux-arm64/native/libuiohook.so",
+        "runtimes/linux-x64/native/libuiohook.so",
+        "runtimes/maccatalyst-arm64/native/libuiohook.dylib",
+        "runtimes/maccatalyst-x64/native/libuiohook.dylib",
+        "runtimes/osx-arm64/native/libuiohook.dylib",
+        "runtimes/osx-x64/native/libuiohook.dylib",
+        "runtimes/win-arm64/native/uiohook.dll",
+        "runtimes/win-x64/native/uiohook.dll",
+        "runtimes/win-x86/native/uiohook.dll",
+        "sharphook.7.1.1.nupkg.sha512",
+        "sharphook.nuspec"
+      ]
+    },
     "System.Buffers/4.5.1": {
       "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "type": "package",
@@ -3078,6 +3171,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "SharpHook >= 7.1.1",
       "Terminal.Gui >= 2.0.0-beta.*"
     ]
   },
@@ -3131,6 +3225,10 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "SharpHook": {
+            "target": "Package",
+            "version": "[7.1.1, )"
+          },
           "Terminal.Gui": {
             "target": "Package",
             "version": "[2.0.0-beta.*, )"
