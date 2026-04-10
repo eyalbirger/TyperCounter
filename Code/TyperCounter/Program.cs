@@ -1,32 +1,23 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Terminal.Gui;
 using SharpHook;
 using SharpHook.Native;
 
-//the other text file
+//tmy classes
 using TyperCounter;
 
 namespace TyperCounter
 {
-  public class keyboardKey
-  {
-    public string name;
-    public int frequency;
-
-    public keyboardKey(string name, int frequency)
-    {
-      this.name = name;
-      this.frequency = frequency;
-    }
-  }
-
   internal class Program
   {
     
 
+
     static void Main(string[] args)
     {
+      List<keyboardKey> recordings  = new List<keyboardKey>();
       //folder path for the logs :)
       string logsPath = Path.Combine("logs", "recording.txt");
 
@@ -127,6 +118,7 @@ namespace TyperCounter
       bool programBeforeRunning = false;
       bool accept = false;
       bool programRunning = true;
+      bool programAfterRunningSoICouldScanTheTextFile = false;
       win.KeyDown += (sender, args) =>
       {
         if (!accept)
@@ -180,6 +172,26 @@ namespace TyperCounter
         else if (args == Key.N)
           Application.RequestStop();
         }
+
+
+        else if (programAfterRunningSoICouldScanTheTextFile)
+        {
+          if (File.Exists(logsPath))
+          {
+            string content = File.ReadAllText(logsPath);
+            recordings = keyboardKey.record(recordings, content);
+
+            var topkeys = recordings.OrderByDescending(k => k.frequency).ToList();
+
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine("stats: ");
+
+            foreach (var key in topkeys)
+            {
+              sb.AppendLine($"{key.name}: {key.frequency}");
+            }
+          }
+        }
       };
 
       hook.KeyPressed += (sender, args) =>
@@ -204,17 +216,21 @@ namespace TyperCounter
           programBeforeRunning = true;
           stopB.Visible = false;
           programRunning = false;
+          programAfterRunningSoICouldScanTheTextFile = true;
           programRunningText.Text = text.getText("textAfterRecording");
           hook.Dispose();
         }
       };
       
+
+
+
+
       
       Application.Run(win);
       win.SetFocus();
       Application.Shutdown();
-      
-      //System.Console.WriteLine("This is TyperCounter. its a tool to help you visualize your most used keyboard keys press");
+      //the end :)
     }
   }
 }
