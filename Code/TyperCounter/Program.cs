@@ -103,12 +103,24 @@ namespace TyperCounter
         Y = Pos.Center() - 1,
         Visible = false
       };
+
+      var programAfterRunning = new Label()
+      {
+        Text = @"",
+        X = Pos.Center(),
+        Y = Pos.Center() - 1,
+        Width = Dim.Auto(),
+        Height = Dim.Auto(),
+        TextAlignment = Alignment.Center,
+        Visible = false
+      };
       
       //sharphook obj
       var hook = new TaskPoolGlobalHook();
 
       //i just need to add shit here
-      win.Add(mainTitle, seconderyTitle, startTitle, secondScreenintroduction, areYouSureTitle, programRunningText, stopB);
+      win.Add(mainTitle, seconderyTitle, startTitle, secondScreenintroduction,
+              areYouSureTitle, programRunningText, stopB, programAfterRunning);
       
 
 
@@ -174,22 +186,28 @@ namespace TyperCounter
         }
 
 
-        else if (programAfterRunningSoICouldScanTheTextFile)
+        else if (programAfterRunningSoICouldScanTheTextFile && args == Key.S)
         {
           if (File.Exists(logsPath))
           {
             string content = File.ReadAllText(logsPath);
+
             recordings = keyboardKey.record(recordings, content);
 
             var topkeys = recordings.OrderByDescending(k => k.frequency).ToList();
 
             var sb = new System.Text.StringBuilder();
-            sb.AppendLine("stats: ");
+
+            sb.AppendLine("KEY NAME       | FREQUENCY");
+            sb.AppendLine("----------------|-----------");
 
             foreach (var key in topkeys)
             {
+              string namePart = key.name.PadRight(15);
+              string freqPart = key.frequency.ToString().PadRight(10);
               sb.AppendLine($"{key.name}: {key.frequency}");
             }
+            programAfterRunning.Text = sb.ToString();
           }
         }
       };
@@ -198,7 +216,7 @@ namespace TyperCounter
       {
         if (accept)
         {
-          FileInfo fileinfo = new FileInfo("logs\recording.txt");
+          FileInfo fileinfo = new FileInfo(@"logs\recording.txt");
 
           if (fileinfo.Exists && fileinfo.Length > 5 * 1024 * 1024)
             return;
@@ -213,11 +231,16 @@ namespace TyperCounter
         if(accept == true)
         {
           accept = false;
-          programBeforeRunning = true;
           stopB.Visible = false;
           programRunning = false;
+          programRunningText.Visible = false;
           programAfterRunningSoICouldScanTheTextFile = true;
-          programRunningText.Text = text.getText("textAfterRecording");
+          programAfterRunning.Text = text.getText("textAfterRecording");
+
+          programAfterRunning.Visible = true;
+          win.SetNeedsLayout();
+          programAfterRunning.SetFocus();
+
           hook.Dispose();
         }
       };
