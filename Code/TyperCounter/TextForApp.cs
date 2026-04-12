@@ -26,7 +26,7 @@ Press the 'Stop' button after you finish recording your key presses.";
   static private string areYouSureText = @"Are You Sure (omni-man meme)? (y/n)";
 
   static private string textAfterRecording = @"Program stopped.
-Press s to scan and export the keyboard layout editor's json file.";
+Type 'scan': ";
 
   public TextForApp()
   {
