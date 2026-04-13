@@ -49,6 +49,6 @@ Type 'scan': ";
       default:
         return "text not found";
     }
-  }
+  } 
 
 }
