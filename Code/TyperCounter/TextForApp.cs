@@ -26,7 +26,7 @@ Press the 'Stop' button after you finish recording your key presses.";
   static private string areYouSureText = @"Are You Sure (omni-man meme)? (y/n)";
 
   static private string textAfterRecording = @"Program stopped.
-Type 'scan': ";
+Press to scan: ";
 
   public TextForApp()
   {
@@ -49,6 +49,5 @@ Type 'scan': ";
       default:
         return "text not found";
     }
-  } 
-
+  }
 }

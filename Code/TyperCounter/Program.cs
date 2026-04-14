@@ -104,16 +104,22 @@ namespace TyperCounter
         Visible = false
       };
 
-      var programAfterRunning = new TextView()
+      var programAfterRunning = new Label()
       {
         Text = @"",
         X = Pos.Center(),
-        Y = Pos.Center() - 1,
+        Y = Pos.Center() - 2,
         Width = Dim.Fill(),
         Height = Dim.Fill(),
-        ReadOnly = true,
-        Visible = false,
-        ColorScheme = whiteOnBlackText
+        Visible = false
+      };
+
+      var scanB = new Button()
+      {
+        Text = @"",
+        X = Pos.Center(),
+        Y = Pos.Center(),
+        Visible = false
       };
       
       //sharphook obj
@@ -121,7 +127,8 @@ namespace TyperCounter
 
       //i just need to add shit here
       win.Add(mainTitle, seconderyTitle, startTitle, secondScreenintroduction,
-              areYouSureTitle, programRunningText, stopB, programAfterRunning);
+              areYouSureTitle, programRunningText, stopB, programAfterRunning,
+              scanB);
       
 
 
@@ -133,6 +140,7 @@ namespace TyperCounter
       bool programRunning = true;
       bool programAfterRunningSoICouldScanTheTextFile = false;
       bool isProcessingStats = false;
+      bool scanPlz = false;
       win.KeyDown += (sender, args) =>
       {
         if (!accept)
@@ -205,64 +213,6 @@ namespace TyperCounter
         }
       };
 
-      programAfterRunning.TextChanged += (sender, args) =>
-      {
-        if (isProcessingStats) return;
-
-        if (programAfterRunningSoICouldScanTheTextFile)
-        {
-          string input = programAfterRunning.Text.ToString().Trim().ToLower();
-          
-          if (input.TrimEnd().EndsWith("scan"))
-          {
-            isProcessingStats = true;
-            programAfterRunningSoICouldScanTheTextFile = false;
-            programAfterRunning.ReadOnly = true;
-
-            if (File.Exists(logsPath))
-            {
-              string content = File.ReadAllText(logsPath);
-
-              recordings = keyboardKey.record(recordings, content);
-
-              var topkeys = recordings.OrderByDescending(k => k.frequency).ToList();
-              
-              int totalKeys = topkeys.Sum(k => k.frequency);
-
-              var sb = new System.Text.StringBuilder();
-
-              string header = $" {"Name".PadRight(15)} | {"Count".PadRight(12)} | {"%".PadRight(8)}";
-              string divider = new string('-', header.Length);
-
-              sb.AppendLine(header);
-              sb.AppendLine(divider);
-
-              foreach (var key in topkeys)
-              {
-                double percent = (double)key.frequency / totalKeys * 100;
-
-                string namePart = key.name.PadRight(15);
-                string freqPart = key.frequency.ToString().PadRight(12);
-                string percPart = $" {percent:F1}%".PadRight(8);
-
-                sb.AppendLine($" {namePart} | {freqPart} | {percPart}");
-                sb.AppendLine(divider);
-              }
-              programAfterRunning.Text = sb.ToString();
-
-              programAfterRunning.X = 1;
-              programAfterRunning.Y = 1;
-              programAfterRunning.TextAlignment = Alignment.Start;
-              programAfterRunning.Text = sb.ToString();
-
-              programAfterRunning.Width = Dim.Fill();
-              programAfterRunning.Height = Dim.Fill();
-              programAfterRunning.SetFocus();              
-            }
-          }
-        }
-      };
-
       stopB.Accepting += (s, e) =>
       {
         if(accept == true)
@@ -272,20 +222,60 @@ namespace TyperCounter
           programRunning = false;
           programRunningText.Visible = false;
           programAfterRunningSoICouldScanTheTextFile = true;
-          programAfterRunning.Text = text.getText("textAfterRecording");
-          programAfterRunning.ReadOnly = false;
-          programAfterRunning.Visible = true;
           win.SetNeedsLayout();
           programAfterRunning.SetFocus();
 
           hook.Dispose();
+
+          programAfterRunning.Visible = true;
+          
+          scanB.Visible = true;
+          scanB.Text = text.getText("textAfterRecording");
+          scanB.SetFocus();
+        }
+      };
+      scanB.Accepting += (s, e) =>
+      {
+        if (programAfterRunningSoICouldScanTheTextFile)
+        {
+          scanPlz = true;
+          if (File.Exists(logsPath))
+          {
+            string content = File.ReadAllText(logsPath);
+            recordings.Clear();
+            recordings = keyboardKey.record(recordings, content);
+
+            var topKeys = recordings.OrderByDescending(k => k.frequency);
+            int totalKeys = topKeys.Sum(k => k.frequency);
+
+            var table = new System.Text.StringBuilder();
+            string header = $" {"Key Name".PadRight(15)} | {"Count".PadRight(12)} | {"%".PadRight(8)}";
+            string divider = new string('-', header.Length);
+
+            table.AppendLine(header);
+            table.AppendLine(divider);
+
+            foreach(var key in topKeys)
+            {
+              double percent = totalKeys > 0 ? (double)key.frequency / totalKeys * 100 : 0;
+              table.AppendLine($" {key.name.PadRight(15)} | {key.frequency.ToString().PadRight(12)} | {percent:F1}%");
+              table.AppendLine(divider);
+            }
+
+            programAfterRunning.Text = table.ToString();
+            programAfterRunning.Visible = true;
+
+            scanB.Visible = false;
+
+            programAfterRunning.Y = 0;
+            programAfterRunning.X = 0;
+            programAfterRunning.TextAlignment = Alignment.Start;
+          }
         }
       };
       
 
-
-
-
+      
       
       Application.Run(win);
       win.SetFocus();
