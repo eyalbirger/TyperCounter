@@ -105,7 +105,7 @@ namespace TyperCounter
       };
 
       var programAfterRunning = new Label()
-      {
+      { 
         Text = @"",
         X = Pos.Center(),
         Y = Pos.Center() - 2,
