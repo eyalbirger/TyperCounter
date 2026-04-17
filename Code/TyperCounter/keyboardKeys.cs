@@ -37,5 +37,28 @@ public class keyboardKey
       return list;
   }
 
+  public List<(string name, int count, double percent, int[] color)> calcColor(List<keyboardKey> list)
+  {
+    int totalKeys = list.Sum(k => k.frequency);
+
+    double highestFrequency = list.Max(k => k.frequency);
+
+    var result = new List<(string name, int count, double percent, int[] color)>();
+
+    foreach (var key in list)
+    {
+      double percent = totalKeys > 0 ? (double)key.frequency / totalKeys * 100 : 0;
+
+      int colorVeriable = highestFrequency > 0 ?(int)((255.0*key.frequency)/highestFrequency) : 0;
+
+      //i think red would be better, i will show the heatmap the best (i think)
+      int[] color = {255, colorVeriable, colorVeriable};
+
+      result.Add((key.name, key.frequency, percent, color));
+    }
+
+    return result;
+  }
+
 
 }                           

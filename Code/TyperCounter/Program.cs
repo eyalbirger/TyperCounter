@@ -141,6 +141,7 @@ namespace TyperCounter
       bool programAfterRunningSoICouldScanTheTextFile = false;
       bool isProcessingStats = false;
       bool scanPlz = false;
+      bool exportToTxt = false;
       win.KeyDown += (sender, args) =>
       {
         if (!accept)
@@ -270,6 +271,10 @@ namespace TyperCounter
             programAfterRunning.Y = 0;
             programAfterRunning.X = 0;
             programAfterRunning.TextAlignment = Alignment.Start;
+
+
+            //this is for the txt/json export
+            exportToTxt = true;
           }
         }
       };
