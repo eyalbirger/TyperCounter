@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.IO;
 
+
 //using Terminal.Gui;
 
 namespace TyperCounter;
@@ -39,7 +40,7 @@ public class keyboardKey
       return list;
   }
 
-  public List<(string name, int count, double percent, string hex)> calcColor(List<keyboardKey> list)
+  public List<(string name, int count, double percent, string hex)> calcColor(List<keyboardKey> list, string layoutPath)
   {
     int totalKeys = list.Sum(k => k.frequency);
 
@@ -47,17 +48,28 @@ public class keyboardKey
 
     var result = new List<(string name, int count, double percent, string hex)>();
 
+    string layoutContent = File.ReadAllText(layoutPath);
     foreach (var key in list)
     {
       double percent = totalKeys > 0 ? (double)key.frequency / totalKeys * 100 : 0;
+      string hex;
+  
 
-      int colorVeriable = highestFrequency > 0 ?(int)(255 -((255.0*key.frequency)/highestFrequency)) : 255;
+      if (key.frequency <= 0 || !layoutContent.Contains(key.name, StringComparison.OrdinalIgnoreCase))
+        hex ="#FFFFFF";
+      
+      else
+      {
+        //int colorVeriable = highestFrequency > 0 ?(int)(255 -((255.0*key.frequency)/highestFrequency)) : 255;
+        double ratio = (double)key.frequency / highestFrequency;
+        int colorVeriable = (int)(255 - (255.0 * Math.Pow(ratio, 0.3)));
 
-      //i think red would be better, i will show the heatmap the best (i think)
-      int[] color = {255, colorVeriable, colorVeriable};
+        //i think red would be better, i will show the heatmap the best (i think)
+        int[] color = {255, colorVeriable, colorVeriable};
 
-      Color colorTransition = Color.FromArgb(color[0], color[1], color[2]);
-      string hex = ColorTranslator.ToHtml(colorTransition);
+        Color colorTransition = Color.FromArgb(color[0], color[1], color[2]);
+        hex = ColorTranslator.ToHtml(colorTransition);
+      }
 
       result.Add((key.name, key.frequency, percent, hex));
     }
@@ -69,9 +81,19 @@ public class keyboardKey
     if (!File.Exists(logsPath))
       return;
 
+    string folderName = "layout";
+
+    if (!Directory.Exists(folderName))
+      Directory.CreateDirectory(folderName);
+    
+    if (!File.Exists(layoutPath))
+      File.WriteAllText(layoutPath, """ ["A", "S", "D", "F"] """);
+
+    string outputPath = Path.Combine(folderName, "layoutOutput.txt");
+    
     string content = File.ReadAllText(logsPath);
     List<keyboardKey> recordings = keyboardKey.record(new List<keyboardKey>(), content);
-    var proccessedData = calcColor(recordings);
+    var proccessedData = calcColor(recordings, layoutPath);
 
     string layoutContent = File.ReadAllText(layoutPath);
 
@@ -89,7 +111,7 @@ public class keyboardKey
         layoutContent = layoutContent.Replace(targetUpper, replacement);
     }
 
-    File.WriteAllText(layoutPath, layoutContent);
+    File.WriteAllText(outputPath, layoutContent);
   }
 
 }                           
