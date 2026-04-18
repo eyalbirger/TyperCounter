@@ -11,7 +11,7 @@ Yes. The gitignore doesn't allow you to submit the text file that records your t
 
 
 # Features
-===========
+
 - ⌨️ Global key-logging.
 - 💻 A clean, simple and lightweight Terminal User Interface (TUI).
 - 🤖 Automated usage review.
