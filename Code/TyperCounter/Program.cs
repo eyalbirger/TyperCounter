@@ -20,6 +20,8 @@ namespace TyperCounter
       List<keyboardKey> recordings  = new List<keyboardKey>();
       //folder path for the logs :)
       string logsPath = Path.Combine("logs", "recording.txt");
+      //folder path for the layout
+      string layoutPath = Path.Combine("layout", "layout.txt");
 
       Application.Init ();
       var top = Application.Top;
@@ -275,6 +277,9 @@ namespace TyperCounter
 
             //this is for the txt/json export
             exportToTxt = true;
+            
+            keyboardKey engine = new keyboardKey("", 0);
+            engine.exportLayout(logsPath, layoutPath);
           }
         }
       };
