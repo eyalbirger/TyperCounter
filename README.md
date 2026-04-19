@@ -28,7 +28,7 @@ Video guide: xxxx
 **quick guide:**  
 1: Fork the github repo (its recommend use the github desktop app).  
 2: Open the terminal.  
-3: Cd into the downloaded file (make sure you cd into the "Code\TyperCounter" folder!).
-4: Type "dotnet run"
-5: Go through with the app's instructions
-6: Enjoy the results
+3: Cd into the downloaded file (make sure you cd into the "Code\TyperCounter" folder!).  
+4: Type "dotnet run".  
+5: Go through with the app's instructions.  
+6: Enjoy the results.  
