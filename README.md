@@ -30,12 +30,20 @@ Yes. The gitignore doesn't allow you to submit the text file that records your t
 
 **quick guide:**  
 &emsp;**1: Clone The Repo:**  
-&emsp;```
+```
 git clone https://github.com/YOUR_USERNAME/TyperCounter.git
 cd TyperCounter/Code/TyperCounter
 ```  
-2: Open the terminal.  
-3: Cd into the downloaded file (make sure you cd into the "Code\TyperCounter" folder!).  
-4: Type "dotnet run".  
-5: Go through with the app's instructions.  
-6: Enjoy the results.  
+&emsp;**2: Copy & Paste your keyboard layout editors "Raw Data" into a new file called:**  
+```layout.txt```
+
+&emsp;**3: Run the app**  
+```
+dotnet run
+```  
+
+&emsp;**4: Generate Your HeatMap**  
+&emsp;Follow the app's instructions. The app will create a layoutOutpus.txt file in your ```layout/``` folder.   
+
+&emsp;**5: Visualize**  
+&emsp;Copy the contents of layoutOutput.txt and paste it into the Raw Data tab at keyboard-layout-editor.com.
