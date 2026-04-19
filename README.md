@@ -44,6 +44,6 @@ dotnet run
 &emsp;**5: Visualize**  
 &emsp;Copy the contents of layoutOutput.txt and paste it into the Raw Data tab at [keyboard-layout-editor.com](https://www.keyboard-layout-editor.com/).  
 
-# Security & Privacy 
+# 🔒 Security & Privacy 
 - The .gitignore doesn't let you submit your logs and layouts. You can change it in the it to export your layouts and logs, but its on your own responsibility.
 - **Tip:** Turn the program off when typing sensitive info (eg. passwords), you can always run it again.
