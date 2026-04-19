@@ -30,10 +30,10 @@ Yes. The gitignore doesn't allow you to submit the text file that records your t
 
 **quick guide:**  
   1: Clone The Repo:  
-    ```
-    git clone https://github.com/YOUR_USERNAME/TyperCounter.git
-    cd TyperCounter/Code/TyperCounter
-    ```  
+  ```
+  git clone https://github.com/YOUR_USERNAME/TyperCounter.git  
+  cd TyperCounter/Code/TyperCounter
+  ```  
   2: Open the terminal.  
   3: Cd into the downloaded file (make sure you cd into the "Code\TyperCounter" folder!).  
   4: Type "dotnet run".  
