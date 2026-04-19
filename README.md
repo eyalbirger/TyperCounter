@@ -1,4 +1,5 @@
 # ⌨️ TyperCounter
+![alt text](photos\corne_TyperCounter.png)
 **TyperCounter**  
 is a lightweight C# app designed for custom keyboards enthusiasts. It records your all of your keyboard outputs and transforms that data into a visual heatmap using the [keyboard layout editor](https://www.keyboard-layout-editor.com) format
 
@@ -46,4 +47,4 @@ dotnet run
 
 # 🔒 Security & Privacy 
 - The .gitignore doesn't let you submit your logs and layouts. You can change it in the it to export your layouts and logs, but its on your own responsibility.
-- **Tip:** Turn the program off when typing sensitive info (eg. passwords), you can always run it again.
+- **Tip:** Turn the program off when typing sensitive info (eg. passwords), you can always run it again. 

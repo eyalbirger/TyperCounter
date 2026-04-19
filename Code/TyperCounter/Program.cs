@@ -214,7 +214,7 @@ namespace TyperCounter
           string keyname = args.Data.KeyCode.ToString().Replace("Vc", "");
           File.AppendAllText(logsPath, keyname + Environment.NewLine);
         }
-      };
+      };                                                           
 
       stopB.Accepting += (s, e) =>
       {
