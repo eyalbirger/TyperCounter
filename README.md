@@ -30,7 +30,7 @@ Yes. The gitignore doesn't allow you to submit the text file that records your t
 
 **quick guide:**  
 &emsp;**1: Clone The Repo:**  
-```
+&emsp;```
 git clone https://github.com/YOUR_USERNAME/TyperCounter.git
 cd TyperCounter/Code/TyperCounter
 ```  
