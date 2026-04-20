@@ -48,3 +48,6 @@ dotnet run
 # 🔒 Security & Privacy 
 - The .gitignore doesn't let you submit your logs and layouts. You can change it in the it to export your layouts and logs, but its on your own responsibility.
 - **Tip:** Turn the program off when typing sensitive info (eg. passwords), you can always run it again. 
+# 🙏 Want to Contribute?
+Start to build and submit a marge request, and I will review it and accept it.  
+**I will not accept AI slop!**
