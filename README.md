@@ -1,5 +1,5 @@
 # ⌨️ TyperCounter
-![visualization](<img width="830" height="282" alt="corne_TyperCounter_jpg" src="https://github.com/user-attachments/assets/5b55178c-f093-4e0e-a523-df6f98735a1d" />
+![visualization](photos\corne_TyperCounter_jpg.jpg
 )
 
 **TyperCounter**  
