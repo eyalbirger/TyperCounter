@@ -19,7 +19,7 @@ that means every time you press on a key on your keyboard,
 it will be recorded in a .txt file.
 I (the creator) DO NOT have acces to this file (you can't uplaod it to github).
 
-Press 'H' for help.
+Go to the GitHub page for help.
 Press 'Esc' to close this app.
 Press the 'Stop' button after you finish recording your key presses.";
 
