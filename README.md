@@ -1,5 +1,5 @@
 # ⌨️ TyperCounter
-![cornePic](photos\corne_TyperCounter_jpg.jpg)
+![cornePic](photos/corne_TyperCounter_jpg.jpg)
 
 **TyperCounter**  
 is a lightweight C# app designed for custom keyboards enthusiasts. It records your all of your keyboard outputs and transforms that data into a visual heatmap using the [keyboard layout editor](https://www.keyboard-layout-editor.com) format
