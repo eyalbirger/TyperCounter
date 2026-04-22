@@ -1,5 +1,5 @@
 # ⌨️ TyperCounter
-![visualization](photos\corne_TyperCounter_jpg.jpg
+![cornePic](photos\corne_TyperCounter_jpg.jpg
 )
 
 **TyperCounter**  
