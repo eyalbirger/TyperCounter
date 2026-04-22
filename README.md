@@ -30,7 +30,7 @@ Recently, I have started to build a lot of small split keyboards. Those small ke
 **quick guide:**  
 &emsp;**1: Clone The Repo:**  
 ```
-git clone https://github.com/YOUR_USERNAME/TyperCounter.git
+git clone https://github.com/eyalbirger/TyperCounter.git
 cd TyperCounter/Code/TyperCounter
 ```  
 &emsp;**2: Copy & Paste your keyboard layout editors "Raw Data" into a new file called:**  
