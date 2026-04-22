@@ -31,20 +31,21 @@ Recently, I have started to build a lot of small split keyboards. Those small ke
 &emsp;**1: Clone The Repo:**  
 ```
 git clone https://github.com/eyalbirger/TyperCounter.git
-cd TyperCounter/Code/TyperCounter
 ```  
-&emsp;**2: Copy & Paste your keyboard layout editors "Raw Data" into a new file called:**  
+&emsp;**2: Cd into the folder. You need to copy the path from your file explorer! This is an example**  
+``` cd TyperCounter/Code/TyperCounter```  
+&emsp;**3: Copy & Paste your keyboard layout editors "Raw Data" into a new file called:**  
 &emsp;```layout.txt```
 
-&emsp;**3: Run the app**  
+&emsp;**4: Run the app**  
 ```
 dotnet run
 ```  
 
-&emsp;**4: Generate Your HeatMap**  
+&emsp;**5: Generate Your HeatMap**  
 &emsp;Follow the app's instructions. The app will create a layoutOutpus.txt file in your ```layout/``` folder.   
 
-&emsp;**5: Visualize**  
+&emsp;**6: Visualize**  
 &emsp;Copy the contents of layoutOutput.txt and paste it into the Raw Data tab at [keyboard-layout-editor.com](https://www.keyboard-layout-editor.com/).  
 
 # 🔒 Security & Privacy 
