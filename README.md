@@ -25,7 +25,7 @@ Recently, I have started to build a lot of small split keyboards. Those small ke
 - [.NET SDK](https://dotnet.microsoft.com/en-us/download)  
 
 **installation**  
-[Video guide](https://youtu.be/dQw4w9WgXcQ?si=VwlQpzGtQ58pnWTe)  
+[Video guide](https://youtu.be/x0dSx5Pcp7o?si=ZMrIPtrmntzrB9tt)  
 
 **quick guide:**  
 &emsp;**1: Clone The Repo:**  
