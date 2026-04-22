@@ -14,7 +14,7 @@ Recently, I have started to build a lot of small split keyboards. Those small ke
 - 💻 A clean, simple and lightweight Terminal User Interface (TUI).
 - 🤖 Automated key-mapping.
 - 👀 Quick clean and detailed review.
-- 🔥 Automated heatmap creator for every keyboard layout.
+- 🔥 Automated heatmap creator.
 - 🔐 A secure app so you won't accidentally upload your logs to github :).
 - 🌍 Global compatibility- works with ANY keyboard layout.
 - 💾 Easy install and usage.
