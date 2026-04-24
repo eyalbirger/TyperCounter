@@ -29,22 +29,18 @@ Recently, I have started to build a lot of small split keyboards. Those small ke
 **quick guide:**  
 &emsp;**1: Clone The Repo:**  
 ```
+cd Documents
 git clone https://github.com/eyalbirger/TyperCounter.git
 ```  
-&emsp;**2: Cd into the folder. You need to copy the path from your file explorer! This is an example**  
-``` cd TyperCounter/Code/TyperCounter```  
+&emsp;**2: Open your TyperCounter folder and double click the application called "TyperCounter"**  
+  
 &emsp;**3: Copy & Paste your keyboard layout editors "Raw Data" into a new file called:**  
-&emsp;```layout.txt```
+&emsp;```layout.txt```  
 
-&emsp;**4: Run the app**  
-```
-dotnet run
-```  
-
-&emsp;**5: Generate Your HeatMap**  
+&emsp;**4: Generate Your HeatMap**  
 &emsp;Follow the app's instructions. The app will create a layoutOutpus.txt file in your ```layout/``` folder.   
 
-&emsp;**6: Visualize**  
+&emsp;**5: Visualize**  
 &emsp;Copy the contents of layoutOutput.txt and paste it into the Raw Data tab at [keyboard-layout-editor.com](https://www.keyboard-layout-editor.com/).  
 
 # 🔒 Security & Privacy 
