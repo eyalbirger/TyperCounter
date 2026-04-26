@@ -41,7 +41,7 @@ git clone https://github.com/eyalbirger/TyperCounter.git
 &emsp;Follow the app's instructions. The app will create a layoutOutpus.txt file in your ```layout/``` folder.   
 
 &emsp;**5: Visualize**  
-&emsp;Copy the contents of layoutOutput.txt and paste it into the Raw Data tab at [keyboard-layout-editor.com](https://www.keyboard-layout-editor.com/).  
+&emsp;Copy the contentss of layoutOutput.txt and paste it into the Raw Data tab at [keyboard-layout-editor.com](https://www.keyboard-layout-editor.com/).  
 
 # 🔒 Security & Privacy 
 - The .gitignore doesn't let you submit your logs and layouts. You can change it in the it to export your layouts and logs, but its on your own responsibility.
