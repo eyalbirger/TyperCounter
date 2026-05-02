@@ -37,6 +37,7 @@ git clone https://github.com/eyalbirger/TyperCounter.git
 &emsp;**3: Copy & Paste your keyboard layout editors "Raw Data" into a new file called:**  
 &emsp;```layout.txt```  
 
+
 &emsp;**4: Generate Your HeatMap**  
 &emsp;Follow the app's instructions. The app will create a layoutOutpus.txt file in your ```layout/``` folder.   
 
