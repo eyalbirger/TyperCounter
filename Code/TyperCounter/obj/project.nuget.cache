@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3fMBqa6gOHo=",
+  "dgSpecHash": "VLdAuaXPNCI=",
   "success": true,
   "projectFilePath": "C:\\Users\\eyalb\\Documents\\Github\\TyperCounter\\Code\\TyperCounter\\TyperCounter.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,6 @@
     "C:\\Users\\eyalb\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\eyalb\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\eyalb\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
-    "C:\\Users\\eyalb\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.9\\microsoft.net.illink.tasks.9.0.9.nupkg.sha512",
     "C:\\Users\\eyalb\\.nuget\\packages\\microsoft.sourcelink.common\\8.0.0\\microsoft.sourcelink.common.8.0.0.nupkg.sha512",
     "C:\\Users\\eyalb\\.nuget\\packages\\microsoft.sourcelink.github\\8.0.0\\microsoft.sourcelink.github.8.0.0.nupkg.sha512",
     "C:\\Users\\eyalb\\.nuget\\packages\\sharphook\\7.1.1\\sharphook.7.1.1.nupkg.sha512",
